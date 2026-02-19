@@ -3,7 +3,7 @@ name: Test / Build / Release
 on:
   push:
     branches:
-      - homolog
+      - main
 
 permissions:
   contents: write
@@ -45,7 +45,7 @@ jobs:
             --build-arg GITHUB_TOKEN=${{ secrets.RELEASE_GH_TOKEN }} \
             --build-arg GIT_COMMIT_HASH=$SHORT_SHA \
             -t $IMAGE:$SHORT_SHA \
-            -t $IMAGE:homolog .
+            -t $IMAGE:latest .
 
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
           echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
@@ -57,4 +57,4 @@ jobs:
         run: |
           echo "✅ Pushed:"
           echo " - $IMAGE:$SHORT_SHA"
-          echo " - $IMAGE:homolog"
+          echo " - $IMAGE:latest"
