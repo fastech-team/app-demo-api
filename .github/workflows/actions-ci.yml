@@ -51,7 +51,7 @@ jobs:
           echo "SHORT_SHA=$SHORT_SHA" >> $GITHUB_ENV
 
       - name: Push versioned image
-        run: docker push $IMAGE:$SHORT_SHA --all-tags
+        run: docker push ${{ env.IMAGE }} --all-tags
 
       - name: Show pushed tags
         run: |
