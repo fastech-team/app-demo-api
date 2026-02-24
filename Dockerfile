@@ -1,5 +1,4 @@
-# FROM ubuntu/nginx:latest
-FROM ubuntu/apache2:latest
-RUN apt -y update
-RUN apt -y install curl
+FROM nginx:stable-alpine
+# FROM httpd:alpine
+RUN apk add --no-cache curl
 EXPOSE 80
